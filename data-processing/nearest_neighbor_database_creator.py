@@ -1,14 +1,4 @@
 # nearest_neighbor_database_creator.py
-# Hybrid pipeline: PySpark (ALS) -> Annoy nearest neighbors -> SQLite
-# 
-# In order to properly utilize PySpark, and to optimize performance 
-# with Annoy, the assistance of large language models were used to 
-# improve some code in this file. When I wrote the code completely 
-# by myself, my implementation using PySpark was improperly configured 
-# which caused my computers disk to reach 100% utilization. My computer 
-# had an SSD, so it would have been damaged to it if it was sustained 
-# for a longer period of time. The implementation has been changed so 
-# now it runs without causing strain on computers hardware. 
 #
 # Requirements:
 #   pip install pyspark annoy psutil numpy
@@ -30,6 +20,15 @@ from pyspark.ml.recommendation import ALS
 # Annoy
 from annoy import AnnoyIndex
 import numpy as np
+
+# In order to properly utilize PySpark, and to optimize performance 
+# with Annoy, the assistance of large language models were used to 
+# improve some code in this file. When I wrote the code completely 
+# by myself, my implementation using PySpark was improperly configured 
+# which caused my computers disk to reach 100% utilization. My computer 
+# had an SSD, so it would have been damaged to it if it was sustained 
+# for a longer period of time. The implementation has been changed so 
+# now it runs without causing strain on computers hardware. 
 
 # ----------------- Configuration -----------------
 RATINGS_FILE = "csv-files/ratings.csv"          # same working directory
@@ -228,3 +227,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
